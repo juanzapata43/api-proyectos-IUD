@@ -6,3 +6,7 @@ const ProjectTypeSchema = new Schema({
     creationDate: { type: Date, default: Date.now },
     updateDate: { type: Date }
 }); 
+
+const ProjectType = mongoose.model('ProjectType', ProjectTypeSchema);
+
+export default ProjectType;
