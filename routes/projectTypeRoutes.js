@@ -4,7 +4,7 @@ import { consultarTipoProyecto, consultarTodosTipoProyecto, crearTipoProyecto } 
 const router = express.Router();
 
 router.get('/tiposProyecto', consultarTodosTipoProyecto);
-router.get('/tiposProyectos:id', consultarTipoProyecto);
+router.get('/tiposProyecto/:id', consultarTipoProyecto);
 router.post('/tiposProyecto', crearTipoProyecto);
 
 export default router;
