@@ -1,4 +1,4 @@
-import ProjectType from "../models/projectType"
+import ProjectType from "../models/projectType.js"
 
 
 export const consultarTipoProyecto = async (req, res) => {
@@ -12,7 +12,7 @@ export const consultarTipoProyecto = async (req, res) => {
     }
 }
 
-export const consultarTodosTipoProyecto = async (res) => {
+export const consultarTodosTipoProyecto = async (req, res) => {
     try {
         const tiposProyecto = await ProjectType.find();
         if (tiposProyecto) {
@@ -25,9 +25,9 @@ export const consultarTodosTipoProyecto = async (res) => {
 
 export const crearTipoProyecto = async (req, res) => {
     try {
-        const projectType = new ProjectType({ name: 'Essay' });
+        const projectType = new ProjectType({ name: req.body.name, creationDate: Date.now(), updateDate: Date.now() });
         await projectType.save();
-        res.status(201).json({ message: 'Test project type created successfully!' });
+        res.status(201).json({ message: 'Nuevo tipo de proyecto creado', projectType });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
