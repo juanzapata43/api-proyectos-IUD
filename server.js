@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors';
+import connectDB from './models/utils/db';
 
 const app = express();
 app.use(express.json());
@@ -8,6 +9,8 @@ app.use((req, res, next) => {
     next();
 });
 app.use(cors());
+
+connectDB();
 
 // Resto de la configuración de Express
 const PORT = process.env.PORT || 3000;
