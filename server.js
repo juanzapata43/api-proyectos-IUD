@@ -11,9 +11,9 @@ app.use((req, res, next) => {
     next();
 });
 app.use(cors());
-
-app.use('/api/projectType', projectTypeRoutes);
-app.use('/api/client', clientRoutes);
+const prefijoApi = '/api';
+app.use(prefijoApi, projectTypeRoutes);
+app.use(prefijoApi, clientRoutes);
 
 connectDB();
 
