@@ -37,6 +37,7 @@ export const crearTipoProyecto = async (req, res) => {
 
 export const actualizarTipoProyecto = async (req, res) => {
     try {
+        const tipoProyecto = await ProjectType.findById(req.params.id);
         if (!tipoProyecto) {
             return res.status(404).json({ error: 'Tipo de proyecto no encontrado' });
         }
