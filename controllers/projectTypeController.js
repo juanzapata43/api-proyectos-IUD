@@ -27,7 +27,8 @@ export const consultarTodosTipoProyecto = async (req, res) => {
 
 export const crearTipoProyecto = async (req, res) => {
     try {
-        const tipoProyecto = new ProjectType({ name: req.body.name, creationDate: Date.now(), updateDate: Date.now() });
+        const fechaActual = new Date()
+        const tipoProyecto = new ProjectType({ name: req.body.name, creationDate: fechaActual, updateDate: fechaActual });
         await tipoProyecto.save();
         res.status(201).json({ message: 'Nuevo tipo de proyecto creado', tipoProyecto });
     } catch (error) {

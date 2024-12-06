@@ -27,6 +27,7 @@ export const consultarTodosProyectos = async (req, res) => {
 
 export const crearProyecto = async (req, res) => {
     try {
+        const fechaActual = new Date()
         const data = req.body
         const proyecto = new Project({
             number: data.number,
@@ -34,8 +35,8 @@ export const crearProyecto = async (req, res) => {
             startDate: data.startDate,
             deliveryDate: data.deliveryDate,
             value: data.value,
-            creationDate: Date.now(),
-            updateDate: Date.now(),
+            creationDate: fechaActual,
+            updateDate: fechaActual,
             client: data.client,
             projectType: data.projectType,
             university: data.university,
