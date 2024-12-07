@@ -6,3 +6,7 @@ const StageSchema = new Schema({
     creationDate: { type: Date, default: Date.now },
     updateDate: { type: Date }
 });
+
+const Stage = mongoose.model('Stage', StageSchema)
+
+export default Stage;

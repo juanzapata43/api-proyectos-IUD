@@ -13,7 +13,7 @@ export const consultarUniversidad = async (req, res) => {
 
 export const consultarUniversidades = async (req, res) => {
     try {
-        const universidades = await Client.find();
+        const universidades = await University.find();
         if (universidades) {
             res.status(200).json(universidades)
         }
@@ -25,7 +25,8 @@ export const consultarUniversidades = async (req, res) => {
 export const crearUniversidad = async (req, res) => {
     try {
         const data = req.body
-        const universidad = new Client({ name: data.name, address: data.address, phone: data.phone, creationDate: fechaActual, updateDate: fechaActual });
+        const fechaActual = new Date()
+        const universidad = new University({ name: data.name, address: data.address, phone: data.phone, creationDate: fechaActual, updateDate: fechaActual });
         await universidad.save();
         res.status(201).json({ message: 'Nueva universidad creada', universidad });
     } catch (error) {

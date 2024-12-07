@@ -14,3 +14,7 @@ const ProjectSchema = Schema({
   university: { type: mongoose.Schema.Types.ObjectId, ref: 'University', required: true },
   stage: { type: mongoose.Schema.Types.ObjectId, ref: 'Stage', required: true }
 });
+
+const Project = mongoose.model('Project', ProjectSchema)
+
+export default Project;
