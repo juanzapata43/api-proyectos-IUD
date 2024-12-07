@@ -1,4 +1,8 @@
-import Project from "../models/project.js"
+import Project from "../models/project.js";
+import University from "../models/university.js";
+import Stage from "../models/stage.js";
+import Client from "../models/client.js";
+import ProjectType from "../models/projectType.js";
 
 export const consultarProyecto = async (req, res) => {
     try {
@@ -42,6 +46,15 @@ export const crearProyecto = async (req, res) => {
             university: data.university,
             stage: data.stage
         });
+
+        const clienteExistente = await Client.findById(client);
+        const tipoProyectoExistente = await ProjectType.findById(projectType);
+        const universidadExistente = await University.findById(university);
+        const etapaExistente = await Stage.findById(stage);
+
+        if (!clienteExistente || !tipoProyectoExistente || !universidadExistente || !etapaExistente) {
+            return res.status(400).json({ message: 'Referencias no validas' });
+        }
         await proyecto.save();
         res.status(201).json({ message: 'Nuevo proyecto creado', proyecto });
     } catch (error) {
