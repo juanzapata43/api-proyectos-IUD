@@ -1,12 +1,16 @@
-version: "3.8"
 services:
-  app:
-    build: .
-    container_name: projects-application
+  monolith:
+    image: juanzapata1241/gestion-proyectos-monolito
+    container_name: proyectos-monolito
     ports:
       - "3000:3000"
     environment:
       - MONGO_URI=${MONGO_URI}
 
-volumes:
-  mongo-data:
+  microservicio:
+    image: juanzapata1241/gestion-proyectos-microservicio:latest
+    container_name: proyectos-microservicio
+    ports:
+      - "3001:3001"
+    environment:
+      - MONGO_URI=${MONGO_URI}

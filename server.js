@@ -2,7 +2,6 @@ import express from 'express'
 import cors from 'cors';
 import connectDB from './utils/db.js';
 import clientRoutes from './routes/clientRoutes.js';
-import projectRoutes from './routes/projectRoutes.js';
 import projectTypeRoutes from './routes/projectTypeRoutes.js'
 import stageRoutes from './routes/stageRoutes.js'
 import universityRoutes from './routes/universityRoutes.js'
@@ -16,7 +15,6 @@ app.use((req, res, next) => {
 app.use(cors());
 const prefijoApi = '/api';
 app.use(prefijoApi, clientRoutes);
-app.use(prefijoApi, projectRoutes);
 app.use(prefijoApi, projectTypeRoutes);
 app.use(prefijoApi, stageRoutes);
 app.use(prefijoApi, universityRoutes);
