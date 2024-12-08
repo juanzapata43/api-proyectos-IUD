@@ -25,6 +25,7 @@ connectDB();
 // Resto de la configuración de Express
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
+    console.log("Monolito corriendo");
     console.log('Servidor corriendo en http://localhost:3000');
 });
 
